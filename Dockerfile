@@ -25,6 +25,7 @@ RUN mkdir /media/USBHDD1/shares/completed
 RUN mkdir /media/USBHDD1/shares/watch
 RUN mkdir /media/USBHDD1/shares/watch/nzb-backup
 RUN mkdir /media/USBHDD1/shares/scripts
+RUN mkdir /home/software
 
 # Install SABnzbd & python
 RUN echo "deb http://ppa.launchpad.net/jcfp/ppa/ubuntu precise main" | tee -a /etc/apt/sources.list
@@ -33,8 +34,19 @@ RUN apt-get update
 RUN apt-get install -y aptitude
 RUN aptitude --with-recommends install -y sabnzbdplus
 
+# Install Git
+RUN apt-get install -y git
+
+# Clone SABnzbd master
+cd /home/software
+git clone https://github.com/sabnzbd/sabnzbd.git
+
+
+
 # Install Cron
 RUN apt-get install -y cron
+#(crontab -u root -l; echo "0 3 * * * echo ""Hello""  " ) | crontab -u root -
+
 
 
 # Update
