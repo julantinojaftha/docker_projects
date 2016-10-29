@@ -7,6 +7,8 @@ FROM debian:latest
 #RUN apt-get -y upgrade
 RUN echo "deb http://httpredir.debian.org/debian jessie main contrib non-free" | tee -a /etc/apt/sources.list
 RUN echo "deb-src http://httpredir.debian.org/debian jessie main contrib non-free" | tee -a /etc/apt/sources.list
+RUN echo "deb http://ppa.launchpad.net/jcfp/ppa/ubuntu precise main" | tee -a /etc/apt/sources.list
+RUN apt-key adv --keyserver hkp://pool.sks-keyservers.net:11371 --recv-keys 0x98703123E0F52B2BE16D586EF13930B14BB9F05F
 RUN apt-get update
 RUN apt-get -y upgrade
 
@@ -31,9 +33,8 @@ RUN mkdir /media/USBHDD1/shares/scripts
 RUN mkdir /home/software
 
 # Install SABnzbd & python
-RUN echo "deb http://ppa.launchpad.net/jcfp/ppa/ubuntu precise main" | tee -a /etc/apt/sources.list
-RUN apt-key adv --keyserver hkp://pool.sks-keyservers.net:11371 --recv-keys 0x98703123E0F52B2BE16D586EF13930B14BB9F05F
-RUN apt-get update
+
+#RUN apt-get update
 RUN apt-get install -y aptitude
 RUN aptitude --with-recommends install -y sabnzbdplus
 
@@ -62,4 +63,4 @@ RUN git clone https://github.com/sabnzbd/sabnzbd.git
 #COPY /src/SABnzbd.py /src/SABnzbd.py
 
 EXPOSE 8080
-CMD ["python", "/home/software/sabnzbd/SABnzbd.py"]
+CMD ["python", "/sabnzbd/SABnzbd.py"]
