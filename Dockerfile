@@ -18,18 +18,18 @@ RUN dpkg -i unrar*.deb
 RUN cd && rm -r ~/unrar-nonfree
 
 # Update
-RUN apk add --update python py-pip cherrypy
+#RUN apk add --update python py-pip cherrypy
 #RUN apk --no-cache add --repository http://dl-cdn.alpinelinux.org/alpine/edge/$
 #RUN apk --no-cache add --repository http://dl-cdn.alpinelinux.org/alpine/edge/$
 
 # Install app dependencies
-RUN pip install cheetah
+#RUN pip install cheetah
 #RUN pip install cherrypy
-RUN pip install cherrypy
+#RUN pip install cherrypy
 
 # Bundle app source
-COPY /src/SABnzbd.py /src/SABnzbd.py
+#COPY /src/SABnzbd.py /src/SABnzbd.py
 
-EXPOSE  8090
-CMD ["python", "/src/SABnzbd.py"]
+#EXPOSE  8090
+#CMD ["python", "/src/SABnzbd.py"]
 
