@@ -3,8 +3,8 @@
 FROM debian:latest
 
 # Add Sources
-RUN apt-get update
-RUN apt-get -y upgrade
+#RUN apt-get update
+#RUN apt-get -y upgrade
 RUN echo "deb http://httpredir.debian.org/debian jessie main contrib non-free" | tee -a /etc/apt/sources.list
 RUN echo "deb-src http://httpredir.debian.org/debian jessie main contrib non-free" | tee -a /etc/apt/sources.list
 RUN apt-get update
@@ -18,7 +18,7 @@ RUN dpkg -i unrar*.deb
 RUN cd && rm -r ~/unrar-nonfree
 
 # Install Par2
-RUN apt-get install par2
+RUN apt-get install -y par2
 
 # Creating Directories
 RUN mkdir /media/USBHDD1
