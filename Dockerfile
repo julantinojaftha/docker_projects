@@ -33,6 +33,9 @@ RUN apt-get update
 RUN apt-get install -y aptitude
 RUN aptitude --with-recommends install -y sabnzbdplus
 
+# Install Cron
+RUN apt-get install -y cron
+
 
 # Update
 #RUN apk add --update python py-pip cherrypy
