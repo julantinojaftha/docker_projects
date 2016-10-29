@@ -17,6 +17,9 @@ RUN apt-get source -b unrar-nonfree
 RUN dpkg -i unrar*.deb
 RUN cd && rm -r ~/unrar-nonfree
 
+# Install Par2
+RUN apt-get install par2
+
 # Creating Directories
 RUN mkdir /media/USBHDD1
 RUN mkdir /media/USBHDD1/shares
@@ -58,6 +61,5 @@ RUN git clone https://github.com/sabnzbd/sabnzbd.git
 # Bundle app source
 #COPY /src/SABnzbd.py /src/SABnzbd.py
 
-EXPOSE  8080
+EXPOSE 8080
 CMD ["python", "/home/software/sabnzbd/SABnzbd.py"]
-
