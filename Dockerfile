@@ -5,8 +5,8 @@ FROM debian:latest
 # Add Sources
 RUN apt-get update
 RUN apt-get -y upgrade
-RUN echo "deb http://httpredir.debian.org/debian jessie main contrib non-free" $
-RUN echo "deb-src http://httpredir.debian.org/debian jessie main contrib non-fr$
+RUN echo "deb http://httpredir.debian.org/debian jessie main contrib non-free" | tee -a /etc/apt/sources.list
+RUN echo "deb-src http://httpredir.debian.org/debian jessie main contrib non-free" | tee -a /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get -y upgrade
 
