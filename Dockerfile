@@ -38,16 +38,12 @@ RUN aptitude --with-recommends install -y sabnzbdplus
 RUN apt-get install -y git
 
 # Clone SABnzbd master
-cd /home/software
-git clone https://github.com/sabnzbd/sabnzbd.git
-
-
+RUN cd /home/software
+RUN git clone https://github.com/sabnzbd/sabnzbd.git
 
 # Install Cron
-RUN apt-get install -y cron
-#(crontab -u root -l; echo "0 3 * * * echo ""Hello""  " ) | crontab -u root -
-
-
+#RUN apt-get install -y cron
+#RUN (crontab -u root -l; echo "@reboot python /home/software/sabnzbd/SABnzbd.py &" ) | crontab -u root -
 
 # Update
 #RUN apk add --update python py-pip cherrypy
@@ -62,6 +58,6 @@ RUN apt-get install -y cron
 # Bundle app source
 #COPY /src/SABnzbd.py /src/SABnzbd.py
 
-#EXPOSE  8090
-#CMD ["python", "/src/SABnzbd.py"]
+EXPOSE  8080
+CMD ["python", "/home/software/sabnzbd/SABnzbd.py"]
 
