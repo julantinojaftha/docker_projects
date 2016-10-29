@@ -26,6 +26,14 @@ RUN mkdir /media/USBHDD1/shares/watch
 RUN mkdir /media/USBHDD1/shares/watch/nzb-backup
 RUN mkdir /media/USBHDD1/shares/scripts
 
+# Install SABnzbd & python
+RUN echo "deb http://ppa.launchpad.net/jcfp/ppa/ubuntu precise main" | tee -a /etc/apt/sources.list
+RUN apt-key adv --keyserver hkp://pool.sks-keyservers.net:11371 --recv-keys 0x98703123E0F52B2BE16D586EF13930B14BB9F05F
+RUN apt-get update
+RUN apt-get install -y aptitude
+RUN aptitude --with-recommends install -y sabnzbdplus
+
+
 # Update
 #RUN apk add --update python py-pip cherrypy
 #RUN apk --no-cache add --repository http://dl-cdn.alpinelinux.org/alpine/edge/$
