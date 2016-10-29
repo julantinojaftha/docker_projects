@@ -1,0 +1,11 @@
+git clone thelink.html
+git status
+git add newfile.txt
+git commit -m "added Dockerfile"
+git pull
+git add -A
+git add .
+git commit -m "made changes or any other msg"
+git push
+git pull
+
