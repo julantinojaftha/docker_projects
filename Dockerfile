@@ -13,6 +13,7 @@ RUN apt-get update
 RUN apt-get -y upgrade
 RUN apt-get install -y nano
 RUN apt-get install -y cron
+RUN apt-get install -y wget
 
 # Install UnRar
 RUN mkdir ~/unrar-nonfree && cd ~/unrar-nonfree
