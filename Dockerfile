@@ -33,6 +33,7 @@ RUN mkdir /media/USBHDD1/shares/watch
 RUN mkdir /media/USBHDD1/shares/watch/nzb-backup
 RUN mkdir /media/USBHDD1/shares/scripts
 RUN mkdir /home/software
+RUN mkdir /media/USBHDD1/settings
 
 # Install SABnzbd & python
 
@@ -62,7 +63,7 @@ RUN (crontab -u root -l; echo "@reboot python /home/software/sabnzbd/SABnzbd.py 
 #RUN pip install cherrypy
 
 # Bundle app source
-#COPY /src/SABnzbd.py /src/SABnzbd.py
+COPY /Users/julantino/Docker/downloader/src/sabnzbd.ini /media/USBHDD1/settings/sabnzbd.ini
 
 EXPOSE 8080
-#CMD ["python", "/sabnzbd/SABnzbd.py"]
+CMD ["python", "/sabnzbd/SABnzbd.py -d -f /media/USBHDD1/settings/sabnzbd.ini"]
