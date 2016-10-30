@@ -1,4 +1,4 @@
-# Created by Julantino jaftha
+# Created by Julantino Jaftha
 
 FROM debian:latest
 
@@ -32,8 +32,8 @@ RUN mkdir /media/USBHDD1/shares/completed
 RUN mkdir /media/USBHDD1/shares/watch
 RUN mkdir /media/USBHDD1/shares/watch/nzb-backup
 RUN mkdir /media/USBHDD1/shares/scripts
-RUN mkdir /home/software
-RUN mkdir /media/USBHDD1/settings
+RUN mkdir /software
+RUN mkdir /media/USBHDD1/shares/settings
 
 # Install SABnzbd & python
 
@@ -45,7 +45,7 @@ RUN aptitude --with-recommends install -y sabnzbdplus
 RUN apt-get install -y git
 
 # Clone SABnzbd master
-RUN cd /home/software
+RUN cd /
 RUN git clone https://github.com/sabnzbd/sabnzbd.git
 
 # Install Cron
@@ -63,7 +63,7 @@ RUN git clone https://github.com/sabnzbd/sabnzbd.git
 #RUN pip install cherrypy
 
 # Bundle app source
-ADD https://dl.dropboxusercontent.com/u/12981250/Docker_Projects/UseNetDownloader/sabnzbd/sabnzbd.ini /media/USBHDD1/settings/sabnzbd.ini
+ADD https://dl.dropboxusercontent.com/u/12981250/Docker_Projects/UseNetDownloader/sabnzbd/sabnzbd.ini /media/USBHDD1/shares/settings/sabnzbd.ini
 
 EXPOSE 8080
-CMD ["python", "/sabnzbd/SABnzbd.py -d -f /media/USBHDD1/settings/sabnzbd.ini"]
+CMD ["python", "/sabnzbd/SABnzbd.py -d -f /media/USBHDD1/shares/settings/sabnzbd.ini"]
