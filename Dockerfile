@@ -33,8 +33,11 @@ RUN mkdir /media/USBHDD1/shares/completed
 RUN mkdir /media/USBHDD1/shares/watch
 RUN mkdir /media/USBHDD1/shares/watch/nzb-backup
 RUN mkdir /media/USBHDD1/shares/scripts
-RUN mkdir /software
+#RUN mkdir /software
 RUN mkdir /media/USBHDD1/shares/settings
+RUN mkdir /media/USBHDD1/shares/software
+RUN mkdir /media/USBHDD1/shares/software/sabnzbd
+
 
 # Install SABnzbd & python
 
@@ -43,11 +46,11 @@ RUN apt-get install -y aptitude
 RUN aptitude --with-recommends install -y sabnzbdplus
 
 # Install Git
-RUN apt-get install -y git
+#RUN apt-get install -y git
 
 # Clone SABnzbd master
-RUN cd /
-RUN git clone https://github.com/sabnzbd/sabnzbd.git
+#RUN cd /
+#RUN git clone https://github.com/sabnzbd/sabnzbd.git
 
 # Install Cron
 #RUN apt-get install -y cron
@@ -64,7 +67,7 @@ RUN git clone https://github.com/sabnzbd/sabnzbd.git
 #RUN pip install cherrypy
 
 # Bundle app source
-ADD https://dl.dropboxusercontent.com/u/12981250/Docker_Projects/UseNetDownloader/sabnzbd/sabnzbd.ini /media/USBHDD1/shares/settings/sabnzbd.ini
+#ADD https://dl.dropboxusercontent.com/u/12981250/Docker_Projects/UseNetDownloader/sabnzbd/sabnzbd.ini /media/USBHDD1/shares/settings/sabnzbd.ini
 
 EXPOSE 8080
-CMD ["python", "/sabnzbd/SABnzbd.py -d -f /media/USBHDD1/shares/settings/sabnzbd.ini"]
+CMD ["python", "/media/USBHDD1/shares/software/sabnzbd/SABnzbd.py -d"]
