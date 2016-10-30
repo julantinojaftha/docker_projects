@@ -11,6 +11,8 @@ RUN echo "deb http://ppa.launchpad.net/jcfp/ppa/ubuntu precise main" | tee -a /e
 RUN apt-key adv --keyserver hkp://pool.sks-keyservers.net:11371 --recv-keys 0x98703123E0F52B2BE16D586EF13930B14BB9F05F
 RUN apt-get update
 RUN apt-get -y upgrade
+RUN apt-get install -y nano
+RUN apt-get install -y cron
 
 # Install UnRar
 RUN mkdir ~/unrar-nonfree && cd ~/unrar-nonfree
@@ -46,8 +48,8 @@ RUN cd /home/software
 RUN git clone https://github.com/sabnzbd/sabnzbd.git
 
 # Install Cron
-#RUN apt-get install -y cron
-#RUN (crontab -u root -l; echo "@reboot python /home/software/sabnzbd/SABnzbd.py &" ) | crontab -u root -
+RUN apt-get install -y cron
+RUN (crontab -u root -l; echo "@reboot python /home/software/sabnzbd/SABnzbd.py &" ) | crontab -u root -
 
 # Update
 #RUN apk add --update python py-pip cherrypy
@@ -63,4 +65,4 @@ RUN git clone https://github.com/sabnzbd/sabnzbd.git
 #COPY /src/SABnzbd.py /src/SABnzbd.py
 
 EXPOSE 8080
-CMD ["python", "/sabnzbd/SABnzbd.py"]
+#CMD ["python", "/sabnzbd/SABnzbd.py"]
