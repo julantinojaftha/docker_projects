@@ -50,7 +50,7 @@ RUN apt-get install -y git
 
 # Clone SABnzbd master
 RUN cd /
-RUN git clone https://github.com/sabnzbd/sabnzbd.git
+RUN git clone https://github.com/sabnzbd/sabnzbd.git -b 1.1.x
 
 # Install Cron
 #RUN apt-get install -y cron
@@ -67,8 +67,8 @@ RUN git clone https://github.com/sabnzbd/sabnzbd.git
 #RUN pip install cherrypy
 
 # Bundle app source
-#ADD https://dl.dropboxusercontent.com/u/12981250/Docker_Projects/UseNetDownloader/sabnzbd/sabnzbd.ini /media/USBHDD1/shares/settings/sabnzbd.ini
+ADD https://dl.dropboxusercontent.com/u/12981250/Docker_Projects/UseNetDownloader/sabnzbd/sabnzbd.ini /media/USBHDD1/shares/settings/sabnzbd.ini
 
-EXPOSE 8080
+EXPOSE 8095
 #will add a bash script to run SABnzbd.py
-#CMD ["python", " /media/USBHDD1/shares/software/sabnzbd/SABnzbd.py"]
+CMD ["python", " /sabnzbd/SABnzbd.py -f /media/USBHDD1/shares/settings/sabnzbd.ini"]
