@@ -70,4 +70,4 @@ RUN aptitude --with-recommends install -y sabnzbdplus
 #ADD https://dl.dropboxusercontent.com/u/12981250/Docker_Projects/UseNetDownloader/sabnzbd/sabnzbd.ini /media/USBHDD1/shares/settings/sabnzbd.ini
 
 EXPOSE 8080
-CMD ["python", "/media/USBHDD1/shares/software/sabnzbd/SABnzbd.py -d"]
+CMD ["python", " /media/USBHDD1/shares/software/sabnzbd/SABnzbd.py"]
