@@ -49,7 +49,7 @@ RUN git clone https://github.com/sabnzbd/sabnzbd.git -b 0.7.x
 
 # Generic app settings
 # settings for sabnzbd
-ADD https://dl.dropboxusercontent.com/u/12981250/Docker_Projects/UseNetDownloader/sabnzbd/sabnzbd.ini /media/USBHDD1/shares/settings/sabnzbd.ini
+ADD https://dl.dropboxusercontent.com/u/12981250/Docker_Projects/UseNetDownloader/sabnzbd/sabnzbd.ini /sabnzbd/sabnzbd.ini
 
 # Creating scripts for SABnzbd
 #RUN echo "#!/bin/bash" >> /open_sab.sh
@@ -58,8 +58,7 @@ ADD https://dl.dropboxusercontent.com/u/12981250/Docker_Projects/UseNetDownloade
 
 
 EXPOSE 8095
-#CMD ["python /sabnzbd/SABnzbd.py -f /media/USBHDD1/shares/settings/sabnzbd.ini"]
+#CMD ["python /sabnzbd/SABnzbd.py -f /sabnzbd/sabnzbd.ini"]
 
 # Auto Run from bash.bashrc
-RUN echo "python /sabnzbd/SABnzbd.py -f /media/USBHDD1/shares/settings/sabnzbd.ini &" >> /etc/bash.bashrc
-
+RUN echo "python /sabnzbd/SABnzbd.py -f /sabnzbd/sabnzbd.ini &" >> /etc/bash.bashrc
