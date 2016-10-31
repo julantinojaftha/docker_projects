@@ -54,7 +54,10 @@ RUN git clone https://github.com/sabnzbd/sabnzbd.git -b 0.7.x
 
 # Install Cron
 #RUN apt-get install -y cron
-#RUN (crontab -u root -l; echo "@reboot python /home/sabnzbd/SABnzbd.py &" ) | crontab -u root -
+#RUN (crontab -u root -l; echo "@reboot python /sabnzbd/SABnzbd.py -f /media/USBHDD1/shares/settings/sabnzbd.ini &" ) | crontab -u root -
+#RUN (crontab -u root -l; echo "@reboot /open_sab.sh" ) | crontab -u root -
+
+
 
 # Update
 #RUN apk add --update python py-pip cherrypy
@@ -70,12 +73,17 @@ RUN git clone https://github.com/sabnzbd/sabnzbd.git -b 0.7.x
 ADD https://dl.dropboxusercontent.com/u/12981250/Docker_Projects/UseNetDownloader/sabnzbd/sabnzbd.ini /media/USBHDD1/shares/settings/sabnzbd.ini
 
 # Creating scripts for SABnzbd
-#RUN echo "#!/bin/bash" >> /open_sab.sh
-#RUN echo "python /sabnzbd/SABnzbd.py -f /media/USBHDD1/shares/settings/sabnzbd.ini" >> /open_sab.sh
+RUN echo "#!/bin/bash" >> /open_sab.sh
+RUN echo "python /sabnzbd/SABnzbd.py -f /media/USBHDD1/shares/settings/sabnzbd.ini & " >> /open_sab.sh 
+RUN chmod +x /open_sab.sh
 
 # Test run
-RUN python /sabnzbd/SABnzbd.py -f /media/USBHDD1/shares/settings/sabnzbd.ini &
+#RUN python /sabnzbd/SABnzbd.py -f /media/USBHDD1/shares/settings/sabnzbd.ini &
 
 EXPOSE 8095
 #will add a bash script to run SABnzbd.py
 #CMD ["python /sabnzbd/SABnzbd.py -f /media/USBHDD1/shares/settings/sabnzbd.ini"]
+#RUN "/open_sab.sh"
+
+RUN echo "python /sabnzbd/SABnzbd.py -f /media/USBHDD1/shares/settings/sabnzbd.ini &" >> /etc/bash.bashrc
+
