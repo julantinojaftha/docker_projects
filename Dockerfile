@@ -50,7 +50,7 @@ RUN apt-get install -y git
 
 # Clone SABnzbd master
 RUN cd /
-RUN git clone https://github.com/sabnzbd/sabnzbd.git -b 1.1.x
+RUN git clone https://github.com/sabnzbd/sabnzbd.git -b 0.7.x
 
 # Install Cron
 #RUN apt-get install -y cron
