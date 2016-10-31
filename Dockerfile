@@ -69,6 +69,13 @@ RUN git clone https://github.com/sabnzbd/sabnzbd.git -b 0.7.x
 # Bundle app source
 ADD https://dl.dropboxusercontent.com/u/12981250/Docker_Projects/UseNetDownloader/sabnzbd/sabnzbd.ini /media/USBHDD1/shares/settings/sabnzbd.ini
 
+# Creating scripts for SABnzbd
+#RUN echo "#!/bin/bash" >> /open_sab.sh
+#RUN echo "python /sabnzbd/SABnzbd.py -f /media/USBHDD1/shares/settings/sabnzbd.ini" >> /open_sab.sh
+
+# Test run
+RUN python /sabnzbd/SABnzbd.py -f /media/USBHDD1/shares/settings/sabnzbd.ini &
+
 EXPOSE 8095
 #will add a bash script to run SABnzbd.py
-CMD ["python", " /sabnzbd/SABnzbd.py -f /media/USBHDD1/shares/settings/sabnzbd.ini"]
+#CMD ["python /sabnzbd/SABnzbd.py -f /media/USBHDD1/shares/settings/sabnzbd.ini"]
