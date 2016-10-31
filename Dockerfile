@@ -46,11 +46,11 @@ RUN apt-get install -y aptitude
 RUN aptitude --with-recommends install -y sabnzbdplus
 
 # Install Git
-#RUN apt-get install -y git
+RUN apt-get install -y git
 
 # Clone SABnzbd master
-#RUN cd /
-#RUN git clone https://github.com/sabnzbd/sabnzbd.git
+RUN cd /
+RUN git clone https://github.com/sabnzbd/sabnzbd.git
 
 # Install Cron
 #RUN apt-get install -y cron
@@ -70,4 +70,5 @@ RUN aptitude --with-recommends install -y sabnzbdplus
 #ADD https://dl.dropboxusercontent.com/u/12981250/Docker_Projects/UseNetDownloader/sabnzbd/sabnzbd.ini /media/USBHDD1/shares/settings/sabnzbd.ini
 
 EXPOSE 8080
-CMD ["python", " /media/USBHDD1/shares/software/sabnzbd/SABnzbd.py"]
+#will add a bash script to run SABnzbd.py
+#CMD ["python", " /media/USBHDD1/shares/software/sabnzbd/SABnzbd.py"]
