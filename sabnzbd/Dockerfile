@@ -31,12 +31,13 @@ RUN cd && rm -r ~/unrar-nonfree
 # Creating Directories
 RUN mkdir /media/USBHDD1
 RUN mkdir /media/USBHDD1/shares
-RUN mkdir /media/USBHDD1/shares/downloading
-RUN mkdir /media/USBHDD1/shares/completed
-RUN mkdir /media/USBHDD1/shares/watch
-RUN mkdir /media/USBHDD1/shares/watch/nzb-backup
-RUN mkdir /media/USBHDD1/shares/scripts
-RUN mkdir /media/USBHDD1/shares/settings
+RUN mkdir /media/USBHDD1/shares/SABnzbd/
+RUN mkdir /media/USBHDD1/shares/SABnzbd/downloading
+RUN mkdir /media/USBHDD1/shares/SABnzbd/completed
+RUN mkdir /media/USBHDD1/shares/SABnzbd/watch
+RUN mkdir /media/USBHDD1/shares/SABnzbd/watch/nzb-backup
+RUN mkdir /media/USBHDD1/shares/SABnzbd/scripts
+RUN mkdir /media/USBHDD1/shares/SABnzbd/settings
 RUN mkdir /media/USBHDD1/shares/software
 RUN mkdir /media/USBHDD1/shares/software/sabnzbd
 
@@ -55,7 +56,6 @@ ADD https://dl.dropboxusercontent.com/u/12981250/Docker_Projects/UseNetDownloade
 #RUN echo "#!/bin/bash" >> /open_sab.sh
 #RUN echo "python /sabnzbd/SABnzbd.py -f /media/USBHDD1/shares/settings/sabnzbd.ini & " >> /open_sab.sh 
 #RUN chmod +x /open_sab.sh
-
 
 EXPOSE 8095
 #CMD ["python /sabnzbd/SABnzbd.py -f /sabnzbd/sabnzbd.ini"]
