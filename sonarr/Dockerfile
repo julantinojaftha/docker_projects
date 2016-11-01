@@ -21,13 +21,25 @@ RUN echo "deb http://download.mono-project.com/repo/debian wheezy-libjpeg62-comp
 RUN apt-get update
 RUN apt-get install -y mono-devel
 RUN apt-get install -y nzbdrone
+RUN apt-get install -y nano
 
 # Add autostart service
 ADD nzbdrone.conf /etc/init.d/nzbdrone.conf
-RUN ln -s /usr/lib/insserv/insserv /sbin/insserv
-RUN insserv -v nzbdrone
-RUN /etc/init.d/nzbdrone start
+
+RUN chmod +x /etc/init.d/nzbdrone.conf
+#RUN ln -s /usr/lib/insserv/insserv /sbin/insserv
+#RUN insserv -v nzbdrone.conf
+#RUN update-rc.d nzbdrone.conf defaults
+#RUN useradd nzbdrone
+#RUN service nzbdrone.conf start
+#RUN /etc/init.d/nzbdrone.conf start
 
 
 EXPOSE 8989
 # mono --debug /opt/NzbDrone/NzbDrone.exe
+
+RUN echo "/etc/init.d/nzbdrone.conf start" >> /etc/bash.bashrc
+
+
+
+
