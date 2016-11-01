@@ -27,8 +27,8 @@ RUN apt-get install -y nano
 RUN mkdir /media/USBHDD1
 RUN mkdir /media/USBHDD1/shares
 RUN mkdir /media/USBHDD1/shares/Sonarr
-RUN mkdir /media/USBHDD1/shares/settings
-RUN mkdir /media/USBHDD1/shares/datadir
+RUN mkdir /media/USBHDD1/shares/Sonarr/settings
+RUN mkdir /media/USBHDD1/shares/Sonarr/datadir
 
 
 # Add autostart service
