@@ -22,5 +22,12 @@ RUN apt-get update
 RUN apt-get install -y mono-devel
 RUN apt-get install -y nzbdrone
 
+# Add autostart service
+ADD nzbdrone.conf /etc/init.d/nzbdrone.conf
+RUN ln -s /usr/lib/insserv/insserv /sbin/insserv
+RUN insserv -v nzbdrone
+RUN /etc/init.d/nzbdrone start
+
+
 EXPOSE 8989
 # mono --debug /opt/NzbDrone/NzbDrone.exe
