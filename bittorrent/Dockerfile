@@ -16,8 +16,6 @@ RUN apt-get install -y nano
 RUN apt-get install -y deluged
 RUN apt-get install -y deluge-console
 RUN apt-get install -y python-mako
-RUN apt-get install -y deluge-web
-
 
 
 # Creating Directories
@@ -31,13 +29,13 @@ RUN mkdir /media/USBHDD1/shares/torrents/torrent-backups
 RUN mkdir /media/USBHDD1/shares/torrents/settings
 
 
-RUN deluged
-RUN pkill deluged
-RUN cp ~/.config/deluge/auth ~/.config/deluge/auth.old
-RUN echo "root:toor:10" >> ~/.config/deluge/auth
+ADD run.sh /run.sh
+RUN chmod +x run.sh
+RUN /run.sh
+ADD /core.conf ~/.config/deluge/core.conf
 
-RUN deluge-web
-RUN pkill deluge-web
+#RUN deluge-web
+#RUN pkill deluge-web
 
 
 
