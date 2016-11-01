@@ -23,6 +23,14 @@ RUN apt-get install -y mono-devel
 RUN apt-get install -y nzbdrone
 RUN apt-get install -y nano
 
+# Creating Directories
+RUN mkdir /media/USBHDD1
+RUN mkdir /media/USBHDD1/shares
+RUN mkdir /media/USBHDD1/shares/Sonarr
+RUN mkdir /media/USBHDD1/shares/settings
+RUN mkdir /media/USBHDD1/shares/datadir
+
+
 # Add autostart service
 ADD nzbdrone.conf /etc/init.d/nzbdrone.conf
 
