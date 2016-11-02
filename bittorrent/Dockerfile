@@ -29,10 +29,10 @@ RUN mkdir /media/USBHDD1/shares/torrents/torrent-backups
 RUN mkdir /media/USBHDD1/shares/torrents/settings
 
 
-ADD run.sh /run.sh
-RUN chmod +x run.sh
-RUN /run.sh
-ADD /core.conf ~/.config/deluge/core.conf
+#ADD run.sh /run.sh
+#RUN chmod +x run.sh
+#RUN /run.sh
+#ADD /core.conf ~/.config/deluge/core.conf
 
 #RUN deluge-web
 #RUN pkill deluge-web
