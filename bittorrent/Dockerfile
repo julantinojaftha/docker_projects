@@ -30,8 +30,10 @@ RUN mkdir /media/USBHDD1/shares/torrents/settings
 
 
 ADD core.conf /core.conf
+ADD rs.py /rs.py
 ADD run.sh /run.sh
-RUN chmod +x run.sh
+RUN chmod +x /run.sh
+RUN chmod +x /rs.py
 RUN /run.sh
 
 #RUN deluge-web
