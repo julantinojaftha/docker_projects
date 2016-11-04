@@ -44,4 +44,5 @@ RUN /run.sh
 EXPOSE 58846
 
 # Auto Run from bash.bashrc
-#RUN echo "python /sabnzbd/SABnzbd.py -f /sabnzbd/sabnzbd.ini &" >> /etc/bash.bashrc
+RUN echo "deluged" >> /etc/bash.bashrc
+RUN echo "deluge-web &" >> /etc/bash.bashrc
