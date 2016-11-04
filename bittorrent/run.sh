@@ -34,5 +34,8 @@ python /rs.py ~/.config/deluge
 
 pkill deluged
 pkill deluge-web
+sleep 2
 cp /core.conf ~/.config/deluge/core.conf
-
+#sleep 2
+#deluged
+#deluge-web &
