@@ -18,17 +18,6 @@ RUN apt-get install -y deluge-console
 RUN apt-get install -y python-mako
 
 
-# Creating Directories
-#RUN mkdir /media/USBHDD1
-#RUN mkdir /media/USBHDD1/shares
-#RUN mkdir /media/USBHDD1/shares/torrents
-#RUN mkdir /media/USBHDD1/shares/torrents/downloading
-#RUN mkdir /media/USBHDD1/shares/torrents/completed
-#RUN mkdir /media/USBHDD1/shares/torrents/watch
-#RUN mkdir /media/USBHDD1/shares/torrents/torrent-backups
-#RUN mkdir /media/USBHDD1/shares/torrents/settings
-
-
 ADD core.conf /core.conf
 ADD create_directories.sh /create_directories.sh
 ADD rs.py /rs.py

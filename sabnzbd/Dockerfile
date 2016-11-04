@@ -29,36 +29,30 @@ RUN dpkg -i unrar*.deb
 RUN cd && rm -r ~/unrar-nonfree
 
 # Creating Directories
-RUN mkdir /media/USBHDD1
-RUN mkdir /media/USBHDD1/shares
-RUN mkdir /media/USBHDD1/shares/SABnzbd/
-RUN mkdir /media/USBHDD1/shares/SABnzbd/downloading
-RUN mkdir /media/USBHDD1/shares/SABnzbd/completed
-RUN mkdir /media/USBHDD1/shares/SABnzbd/watch
-RUN mkdir /media/USBHDD1/shares/SABnzbd/watch/nzb-backup
-RUN mkdir /media/USBHDD1/shares/SABnzbd/scripts
-RUN mkdir /media/USBHDD1/shares/SABnzbd/settings
-RUN mkdir /media/USBHDD1/shares/software
-RUN mkdir /media/USBHDD1/shares/software/sabnzbd
+#RUN mkdir /media/USBHDD1
+#RUN mkdir /media/USBHDD1/shares
+#RUN mkdir /media/USBHDD1/shares/SABnzbd/
+#RUN mkdir /media/USBHDD1/shares/SABnzbd/downloading
+#RUN mkdir /media/USBHDD1/shares/SABnzbd/completed
+#RUN mkdir /media/USBHDD1/shares/SABnzbd/watch
+#RUN mkdir /media/USBHDD1/shares/SABnzbd/watch/nzb-backup
+#RUN mkdir /media/USBHDD1/shares/SABnzbd/scripts
+#RUN mkdir /media/USBHDD1/shares/SABnzbd/settings
+#RUN mkdir /media/USBHDD1/shares/software
+#RUN mkdir /media/USBHDD1/shares/software/sabnzbd
+ADD create_directories.sh /create_directories.sh
+#ADD run.sh /run.sh
+RUN chmod +x create_directories.sh
+RUN /create_directories.sh
 
 # Clone SABnzbd master
 RUN cd /
 RUN git clone https://github.com/sabnzbd/sabnzbd.git -b 0.7.x
 
-# Add to Cron
-#RUN (crontab -u root -l; echo "@reboot python /sabnzbd/SABnzbd.py -f /media/USBHDD1/shares/settings/sabnzbd.ini &" ) | crontab -u root -
-
 # Generic app settings
 # settings for sabnzbd
 ADD https://dl.dropboxusercontent.com/u/12981250/Docker_Projects/UseNetDownloader/sabnzbd/sabnzbd.ini /sabnzbd/sabnzbd.ini
 
-# Creating scripts for SABnzbd
-#RUN echo "#!/bin/bash" >> /open_sab.sh
-#RUN echo "python /sabnzbd/SABnzbd.py -f /media/USBHDD1/shares/settings/sabnzbd.ini & " >> /open_sab.sh 
-#RUN chmod +x /open_sab.sh
-
-EXPOSE 8095
-#CMD ["python /sabnzbd/SABnzbd.py -f /sabnzbd/sabnzbd.ini"]
-
 # Auto Run from bash.bashrc
+RUN echo "/create_directories.sh" >> /etc/bash.bashrc
 RUN echo "python /sabnzbd/SABnzbd.py -f /sabnzbd/sabnzbd.ini &" >> /etc/bash.bashrc
